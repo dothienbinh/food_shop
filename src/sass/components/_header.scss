@@ -1,0 +1,216 @@
+.header {
+    background-color: $main-bg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: $header-height;
+    transition: height 0.3s ease;
+
+    @include tablet {
+        height: $header-tablet-height;
+        box-shadow: $box-shadow;
+    }
+
+    @include mobile {
+        height: $header-mobile-height;
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    &.shrink {
+        height: $header-shrink-height;
+        box-shadow: $box-shadow;
+        z-index: 100;
+
+        @include mobile {
+            height: $header-mobile-height;
+        }
+    }
+
+    &__logo {
+        @include flex(center, center);
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    &__menu {
+        @include flex(center, space-between);
+        height: 100%;
+        font-size: 1.5rem;
+
+        &__item ~ &__item {
+            margin-left: 39px;
+
+            @include tablet {
+                margin-left: 20px;
+            }
+
+            @include mobile {
+                margin-left: 10px;
+            }
+        }
+
+        &__item.active {
+            font-weight: 600;
+            color: $main-color;
+        }
+
+        &__item:hover {
+            color: $main-color;
+        }
+
+        &__left,
+        &__right {
+            @include flex(center, center);
+            height: 100%;
+        }
+
+        &__right {
+            font-size: 2.25rem;
+
+            &__item {
+                @include flex(center, center);
+
+                @include tablet {
+                    margin-left: 10px;
+                }
+            }
+
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__left {
+            &__close {
+                display: none;
+            }
+
+            @include tablet {
+                flex-direction: column;
+                background-color: $main-bg;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                justify-content: flex-start;
+                padding-top: 30px;
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+
+                &.active {
+                    transform: translateX(0);
+                }
+
+                &__item ~ &__item {
+                    margin-left: unset;
+                    margin-top: 20px;
+                }
+
+                &__close {
+                    display: block;
+                    position: absolute;
+                    left: 20px;
+                    font-size: 2.5rem;
+                }
+            }
+        }
+
+        &__mobile-toggle {
+            display: none;
+
+            @include tablet {
+                display: block;
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+.search{
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
+
+    width: 361px;
+    height: var(--search-height);
+    display: flex;
+    position: relative;
+    background-color: rgb(235, 235, 235);
+    border-radius: 92px;
+    border: 1.5px solid transparent;
+
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
+        width: 2px;
+        height: calc(var(--search-height) - var(--search-top-spacer)*2);
+        background-color: rgba(22, 24, 34, 0.400);
+        
+    }
+
+    &:focus-within{
+        border-color: rgba(22, 24, 34, 0.24);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn{
+        color: rgba(22, 24, 35, 0.80);
+    }
+}
+
+.search input{
+    flex: 1;
+    padding-left: 16px;
+    height: 100%;
+    font-size: 1.6rem;
+    border: none;
+    color: black;
+    background-color: transparent;
+
+}
+
+.clear{
+    position: absolute;
+    right: calc(var(--search-button-width) + 8px);
+    height: 43px;
+    border: none;
+    transform: translate(-50%);
+    color: rgba(22, 24, 34, 0.24);
+    background-color: transparent;
+}
+
+
+.search-btn{
+    width: var(--search-button-width);
+    height: 100%;
+    font-size: 1.8rem;
+    border: none;
+    border-top-right-radius: 92px;
+    border-bottom-right-radius: 92px;
+    color: rgba(22, 24, 34, 0.24);
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(22, 24, 34, 0.24);
+    }
+
+    &:active{
+        background-color: rgba(22, 24, 34, 0.06);
+    }
+}
+
+

@@ -1,0 +1,30 @@
+.contact_methods {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0px;
+    text-align: left;
+
+    span {
+        font-size: 2rem;
+        padding-right: 12px;
+        color: #FE3000;
+
+    }
+
+    p {
+        margin-bottom: 4px;
+        font-size: 1.2rem;
+    }   
+}
+
+.address,
+.phone,
+.email {
+    width: 250px;
+    height: 120px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0px 40px;
+}
+
+
